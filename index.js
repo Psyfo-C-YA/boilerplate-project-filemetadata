@@ -25,7 +25,7 @@ app.post('/upload', upload.single('upfile'), function (req, res) {
     return res.status(400).json({ error: 'No file uploaded' });
   }
   res.json({
-    filename: req.file.originalname,
+    name: req.file.originalname,
     type: req.file.mimetype,
     size: req.file.size
   });
