@@ -24,12 +24,14 @@ app.post('/upload', upload.single('upfile'), function (req, res) {
   if (!req.file) {
     return res.status(400).json({ error: 'No file uploaded' });
   }
-  res.json({
+  res.setHeader('Content-Type', 'application/json'); // Set content type to JSON
+  res.status(200).json({
     name: req.file.originalname,
     type: req.file.mimetype,
     size: req.file.size
   });
 });
+
 
 app.get('/', function (req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
